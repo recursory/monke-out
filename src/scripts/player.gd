@@ -19,10 +19,13 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
-	var hittest = body.move_and_collide(velocity_)
+	var hittest: KinematicCollision2D = body.move_and_collide(velocity_)
 	if hittest:
 		velocity_ *= 0
-		print(hittest)
+		var other = hittest.get_collider().get_parent()
+		print("player.gd._physics_process:hittest:", hittest, ":", other, ".on_click(", self, ")")
+		#hittest.get_collider().get_parent()._ready()
+		other.on_click(self)
 	
 	velocity_ *= 0.9
 	#print(delta, ", ", velocity_)

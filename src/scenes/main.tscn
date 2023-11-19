@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=13 format=3 uid="uid://bicsfb00qqjgu"]
 
-[ext_resource type="PackedScene" path="res://objects/monkebars.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/debug.gd" id="1_0e4y6"]
 [ext_resource type="Texture2D" uid="uid://77sk1235c1ny" path="res://materials/monke.png" id="2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3"]
-[ext_resource type="PackedScene" path="res://objects/monkewall.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dltf6c3fkp2yn" path="res://objects/monkewall.tscn" id="4"]
 [ext_resource type="Shader" uid="uid://bs7x2onxixxga" path="res://materials/lazer_shader.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dd1ielb1uwyww" path="res://objects/csharp_object.tscn" id="7_042va"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"
@@ -106,3 +107,6 @@ material = SubResource("8")
 points = PackedVector2Array(0, 0, 32.2308, 32.2308, 50, 50)
 width = 4.134
 default_color = Color(0.4, 0.501961, 1, 1)
+
+[node name="LogoCSharp_svg" parent="." instance=ExtResource("7_042va")]
+position = Vector2(584, 190)

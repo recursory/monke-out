@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd1ielb1uwyww"]
+
+[ext_resource type="Script" path="res://objects/csharp_object.cs" id="1_gpbm0"]
+[ext_resource type="Texture2D" uid="uid://c2thu80s1yn5j" path="res://materials/Logo_C_sharp.svg.png" id="1_p1a37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp7qk"]
+size = Vector2(48, 48)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gpbm0")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_xp7qk")
+
+[node name="LogoCSharp_svg" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("1_p1a37")
