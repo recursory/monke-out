@@ -1,42 +1,40 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
+@export var speed: float = 2.0
 
-
-export (int) var speed = 2.0
-
-var velocity = Vector2()
-onready var body = self
+var velocity_ = Vector2()
+@onready var body = self
 
 func get_input():
 	var jolt = Vector2()
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("ui_right"):
 		jolt.x += 1
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("ui_left"):
 		jolt.x -= 1
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("ui_down"):
 		jolt.y += 1
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("ui_up"):
 		jolt.y -= 1
-	velocity += jolt.normalized() * speed
+	velocity_ += jolt.normalized() * speed
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
-	var hittest = body.move_and_collide(velocity)
+	var hittest = body.move_and_collide(velocity_)
 	if hittest:
-		velocity *= 0
+		velocity_ *= 0
 		print(hittest)
 	
-	velocity *= 0.9
-	#print(delta, ", ", velocity)
+	velocity_ *= 0.9
+	#print(delta, ", ", velocity_)
 
-onready var debug_line = $"../debug/Line2D"
+@onready var debug_line = $"../debug/Line2D"
 func _ready():
 	#debug_line.position = body.position  + Vector2(50, 50)
 	#print(debug_line.position, ", ", body.position)
 	pass
 
-onready var pillars = $"../pillars"
-func _process(delta):
+@onready var pillars = $"../pillars"
+func _process(_delta):
 	debug_line.clear_points()
 	debug_line.add_point(body.position)
 	
