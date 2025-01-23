@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=14 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/debug.gd" id="1_0e4y6"]
@@ -51,6 +51,23 @@ shader_parameter/green = Color(0.737255, 0.588235, 1, 1)
 shader_parameter/red = Color(0, 0, 0, 1)
 shader_parameter/speed = 11.849
 shader_parameter/speed2 = 80.0
+
+[sub_resource type="GDScript" id="GDScript_6yuu6"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func on_click(object: Node2D):
+	print(object.name)
+"
 
 [node name="Node2D" type="Node2D"]
 material = SubResource("11")
@@ -110,3 +127,4 @@ default_color = Color(0.4, 0.501961, 1, 1)
 
 [node name="LogoCSharp_svg" parent="." instance=ExtResource("7_042va")]
 position = Vector2(584, 190)
+script = SubResource("GDScript_6yuu6")
