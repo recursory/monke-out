@@ -99,6 +99,10 @@ position = Vector2(416, 283)
 [node name="monkebars3" parent="pillars" instance=ExtResource("1")]
 position = Vector2(95, 275)
 
+[node name="monkebars4" parent="pillars" instance=ExtResource("1")]
+
+[node name="monkebars5" parent="pillars" instance=ExtResource("1")]
+
 [node name="walls" type="Node2D" parent="."]
 
 [node name="monkewall" parent="walls" instance=ExtResource("4")]
