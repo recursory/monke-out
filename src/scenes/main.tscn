@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
-[ext_resource type="Script" path="res://scenes/debug.gd" id="1_0e4y6"]
-[ext_resource type="Texture2D" uid="uid://77sk1235c1ny" path="res://materials/monke.png" id="2"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_uvd4o"]
+[ext_resource type="PackedScene" uid="uid://x1h6alnnehtu" path="res://objects/player.tscn" id="2_8eoh2"]
 [ext_resource type="PackedScene" uid="uid://dltf6c3fkp2yn" path="res://objects/monkewall.tscn" id="4"]
 [ext_resource type="Shader" uid="uid://bs7x2onxixxga" path="res://materials/lazer_shader.tres" id="5"]
-[ext_resource type="PackedScene" uid="uid://dd1ielb1uwyww" path="res://objects/csharp_object.tscn" id="7_042va"]
 [ext_resource type="Script" path="res://scenes/Line2D2.gd" id="7_a85lx"]
+[ext_resource type="Shader" path="res://materials/error.gdshader" id="7_itmio"]
+[ext_resource type="PackedScene" uid="uid://8tvwpajdqjlc" path="res://devtools/debugline.tscn" id="8_war26"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"
@@ -43,9 +43,6 @@ render_priority = 0
 shader = SubResource("10")
 shader_parameter/ColorUniform = Color(0.020718, 0, 0.795573, 1)
 
-[sub_resource type="CircleShape2D" id="1"]
-radius = 22.05
-
 [sub_resource type="ShaderMaterial" id="8"]
 shader = ExtResource("5")
 shader_parameter/green = Color(0.737255, 0.588235, 1, 1)
@@ -53,56 +50,34 @@ shader_parameter/red = Color(0, 0, 0, 1)
 shader_parameter/speed = 11.849
 shader_parameter/speed2 = 80.0
 
-[sub_resource type="GDScript" id="GDScript_6yuu6"]
-script/source = "extends Node2D
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwgdi"]
+shader = ExtResource("7_itmio")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lxcaa"]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func on_click(object: Node2D):
-	print(object.name)
-"
-
-[node name="Node2D" type="Node2D"]
+[node name="main" type="Node2D"]
 material = SubResource("11")
 position = Vector2(-1, 3)
-script = ExtResource("1_0e4y6")
+script = ExtResource("1_uvd4o")
 
-[node name="player" type="CharacterBody2D" parent="."]
-position = Vector2(255, 158)
-script = ExtResource("3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(-3, 3)
-shape = SubResource("1")
-
-[node name="Sprite" type="Sprite2D" parent="player"]
-position = Vector2(224, 25)
-scale = Vector2(0.352364, 0.368132)
-texture = ExtResource("2")
-offset = Vector2(-643, -67)
+[node name="player" parent="." instance=ExtResource("2_8eoh2")]
 
 [node name="pillars" type="Node2D" parent="."]
 
 [node name="monkebars" parent="pillars" instance=ExtResource("1")]
-position = Vector2(403, 57)
+position = Vector2(512, 318)
 
 [node name="monkebars2" parent="pillars" instance=ExtResource("1")]
-position = Vector2(416, 283)
+position = Vector2(811, 315)
 
 [node name="monkebars3" parent="pillars" instance=ExtResource("1")]
-position = Vector2(218, 313)
+position = Vector2(875, 262)
 
 [node name="monkebars4" parent="pillars" instance=ExtResource("1")]
+position = Vector2(130, 491)
 
 [node name="monkebars5" parent="pillars" instance=ExtResource("1")]
+position = Vector2(196, 438)
 
 [node name="walls" type="Node2D" parent="."]
 
@@ -119,22 +94,47 @@ position = Vector2(-109, 311)
 scale = Vector2(4.58318, 11.3502)
 
 [node name="monkewall4" parent="walls" instance=ExtResource("4")]
-position = Vector2(1110, 304)
-scale = Vector2(4.58318, 11.3502)
+position = Vector2(1108, 174)
+scale = Vector2(4.58318, 4.8702)
 
 [node name="debug" type="Node2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="debug"]
+visible = false
 material = SubResource("8")
 points = PackedVector2Array(0, 0, 32.2308, 32.2308, 50, 50)
 width = 4.134
 default_color = Color(0.4, 0.501961, 1, 1)
 
-[node name="Line2D2" type="Line2D" parent="debug"]
+[node name="Line2D2_screenedge" type="Line2D" parent="debug"]
+material = SubResource("ShaderMaterial_hwgdi")
 position = Vector2(85.6093, 84.5629)
 points = PackedVector2Array(0, 0, 0, 0)
 script = ExtResource("7_a85lx")
 
-[node name="LogoCSharp_svg" parent="." instance=ExtResource("7_042va")]
-position = Vector2(584, 190)
-script = SubResource("GDScript_6yuu6")
+[node name="StaticBody2D_screen" type="StaticBody2D" parent="debug/Line2D2_screenedge"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="debug/Line2D2_screenedge/StaticBody2D_screen"]
+position = Vector2(421.391, 524.437)
+shape = SubResource("WorldBoundaryShape2D_lxcaa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="debug/Line2D2_screenedge/StaticBody2D_screen"]
+position = Vector2(-28.6093, 74.4371)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_lxcaa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="debug/Line2D2_screenedge/StaticBody2D_screen"]
+position = Vector2(-84.6093, -170.563)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_lxcaa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="debug/Line2D2_screenedge/StaticBody2D_screen"]
+position = Vector2(932.391, 178.437)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_lxcaa")
+
+[node name="devtools_debugline" parent="debug" instance=ExtResource("8_war26")]
+
+[node name="devtools_debugline2" parent="debug" instance=ExtResource("8_war26")]

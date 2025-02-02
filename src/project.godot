@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Shedemon"
+config/version="0.1.0.dev1"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.2")
+config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [dotnet]
@@ -22,6 +23,11 @@ project/assembly_name="Shedemon"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[layer_names]
+
+2d_physics/layer_1="Default"
+2d_physics/layer_2="Screen"
 
 [physics]
 

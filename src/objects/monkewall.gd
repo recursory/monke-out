@@ -10,5 +10,5 @@ func _ready():
 func _process(_delta):
 	pass
 
-func on_click(_other):
+func on_bump(_other):
 	pass

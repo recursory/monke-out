@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://x1h6alnnehtu"]
+
+[ext_resource type="Script" path="res://objects/player.gd" id="1_gmi62"]
+[ext_resource type="Texture2D" uid="uid://77sk1235c1ny" path="res://materials/monke.png" id="2_v0fsa"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 22.05
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(255, 158)
+motion_mode = 1
+script = ExtResource("1_gmi62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+shape = SubResource("1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(224, 25)
+scale = Vector2(0.352364, 0.368132)
+texture = ExtResource("2_v0fsa")
+offset = Vector2(-643, -67)

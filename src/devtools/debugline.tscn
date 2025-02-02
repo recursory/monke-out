@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://8tvwpajdqjlc"]
+
+[ext_resource type="Script" path="res://devtools/debugline.gd" id="1_7snwj"]
+
+[sub_resource type="Gradient" id="Gradient_p34if"]
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 1, 1)
+
+[node name="devtools_debugline" type="Node2D"]
+script = ExtResource("1_7snwj")
+
+[node name="arrowbody" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 100, 100)
+width = 1.0
+default_color = Color(1, 0, 1, 1)
+gradient = SubResource("Gradient_p34if")
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="arrowhead" type="Line2D" parent="."]
+points = PackedVector2Array(100, 90, 100, 100, 90, 100)
+width = 1.0
+default_color = Color(1, 0, 1, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="arrowhead_info" type="RichTextLabel" parent="."]
+self_modulate = Color(1, 0, 1, 1)
+clip_contents = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 70.0
+offset_top = 102.0
+offset_right = 130.0
+offset_bottom = 148.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+text = "100,100"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="arrowtail_info" type="RichTextLabel" parent="."]
+self_modulate = Color(0, 0, 1, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -15.0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 47.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+text = "0, 0
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
