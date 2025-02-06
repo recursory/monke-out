@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://8tvwpajdqjlc"]
+[gd_scene load_steps=5 format=3 uid="uid://8tvwpajdqjlc"]
 
 [ext_resource type="Script" path="res://devtools/debugline.gd" id="1_7snwj"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ur7t8"]
+light_mode = 1
+
 [sub_resource type="Gradient" id="Gradient_p34if"]
 colors = PackedColorArray(0, 0, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k3qik"]
+light_mode = 1
 
 [node name="devtools_debugline" type="Node2D"]
 script = ExtResource("1_7snwj")
 
 [node name="arrowbody" type="Line2D" parent="."]
+material = SubResource("CanvasItemMaterial_ur7t8")
 points = PackedVector2Array(0, 0, 100, 100)
 width = 1.0
 default_color = Color(1, 0, 1, 1)
@@ -18,6 +25,7 @@ end_cap_mode = 2
 antialiased = true
 
 [node name="arrowhead" type="Line2D" parent="."]
+material = SubResource("CanvasItemMaterial_k3qik")
 points = PackedVector2Array(100, 90, 100, 100, 90, 100)
 width = 1.0
 default_color = Color(1, 0, 1, 1)

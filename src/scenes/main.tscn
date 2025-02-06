@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=20 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uvd4o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/Line2D2.gd" id="7_a85lx"]
 [ext_resource type="Shader" path="res://materials/error.gdshader" id="7_itmio"]
 [ext_resource type="PackedScene" uid="uid://8tvwpajdqjlc" path="res://devtools/debugline.tscn" id="8_war26"]
+[ext_resource type="Texture2D" uid="uid://qyoi6n11vqg5" path="res://materials/funnylamp.png" id="10_gv5ar"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"
@@ -54,6 +55,26 @@ shader_parameter/speed2 = 80.0
 shader = ExtResource("7_itmio")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lxcaa"]
+
+[sub_resource type="Gradient" id="Gradient_qqw31"]
+offsets = PackedFloat32Array(0.14, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_54knb"]
+gradient = SubResource("Gradient_qqw31")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.506098, 0.493902)
+fill_to = Vector2(0.932927, 0.054878)
+
+[sub_resource type="Gradient" id="Gradient_skg7a"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uvf0e"]
+gradient = SubResource("Gradient_skg7a")
+width = 5000
+height = 5000
 
 [node name="main" type="Node2D"]
 material = SubResource("11")
@@ -138,3 +159,22 @@ shape = SubResource("WorldBoundaryShape2D_lxcaa")
 [node name="devtools_debugline" parent="debug" instance=ExtResource("8_war26")]
 
 [node name="devtools_debugline2" parent="debug" instance=ExtResource("8_war26")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(321, 303)
+scale = Vector2(3, 3)
+color = Color(1, 0.611425, 0.621319, 1)
+range_z_min = -2048
+range_z_max = 2048
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_54knb")
+
+[node name="Funnylamp" type="Sprite2D" parent="PointLight2D"]
+position = Vector2(0.375368, -1.42486)
+scale = Vector2(0.0832063, 0.108128)
+texture = ExtResource("10_gv5ar")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(484, 191)
+blend_mode = 1
+texture = SubResource("GradientTexture2D_uvf0e")
