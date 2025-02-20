@@ -28,7 +28,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	velocity += (acceleration * delta)
-	
+	self.rotation = velocity.angle()
 	var travel = velocity*delta
 	var hittest: KinematicCollision2D = body.move_and_collide(travel, true)
 	if not hittest:
