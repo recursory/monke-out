@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=27 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uvd4o"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://8tvwpajdqjlc" path="res://devtools/debugline.tscn" id="8_war26"]
 [ext_resource type="Texture2D" uid="uid://qyoi6n11vqg5" path="res://materials/funnylamp.png" id="10_gv5ar"]
 [ext_resource type="Shader" uid="uid://c4kqcho1s4hr7" path="res://scenes/main.tres" id="11_ays1t"]
+[ext_resource type="PackedScene" uid="uid://dvphatnfrecnd" path="res://scenes/fairy_move.tscn" id="12_74jpi"]
+[ext_resource type="PackedScene" uid="uid://dn4xwj13qfr8u" path="res://scenes/fairy_move_2.tscn" id="13_0mnwe"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"
@@ -217,3 +219,20 @@ texture = ExtResource("10_gv5ar")
 position = Vector2(484, 191)
 blend_mode = 1
 texture = SubResource("GradientTexture2D_uvf0e")
+
+[node name="FairyMove" parent="." instance=ExtResource("12_74jpi")]
+position = Vector2(818, 458)
+period = 0.1
+lightColor = Color(0, 1, 0, 1)
+
+[node name="fairy_move2" parent="." instance=ExtResource("13_0mnwe")]
+position = Vector2(892, 380)
+lightColor = Color(1, 0, 0, 1)
+
+[node name="FairyMove2" parent="." instance=ExtResource("12_74jpi")]
+position = Vector2(764, 392)
+period = 0.4
+lightColor = Color(0, 0, 1, 1)
+
+[node name="monkebars" parent="." instance=ExtResource("1")]
+position = Vector2(890, 437)

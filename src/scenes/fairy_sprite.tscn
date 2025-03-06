@@ -1,0 +1,93 @@
+[gd_scene load_steps=19 format=3 uid="uid://1mj3edqgqibh"]
+
+[ext_resource type="Script" path="res://FairySprite.gd" id="1_06ury"]
+[ext_resource type="Texture2D" uid="uid://cds8nmsskbdvs" path="res://materials/LADX_Great_Fairy_Sprite01.png" id="2_kqu1f"]
+[ext_resource type="Texture2D" uid="uid://b7jwv8wnrj61l" path="res://materials/LADX_Great_Fairy_Sprite02.png" id="3_pa0fs"]
+[ext_resource type="Texture2D" uid="uid://f64tqpnm7bp5" path="res://materials/LADX_Great_Fairy_Sprite03.png" id="4_684a6"]
+[ext_resource type="Texture2D" uid="uid://bn3m6v5m4ccdf" path="res://materials/LADX_Great_Fairy_Sprite04.png" id="5_dxql3"]
+[ext_resource type="Texture2D" uid="uid://d4ieo02ffusbi" path="res://materials/LADX_Great_Fairy_Sprite05.png" id="6_5eky0"]
+[ext_resource type="Texture2D" uid="uid://cicxlor7vysx4" path="res://materials/LADX_Great_Fairy_Sprite06.png" id="7_8fnas"]
+[ext_resource type="Texture2D" uid="uid://jagahouq73k4" path="res://materials/LADX_Great_Fairy_Sprite07.png" id="8_2ac3w"]
+[ext_resource type="Texture2D" uid="uid://b8ife8dlxn5n2" path="res://materials/LADX_Great_Fairy_Sprite08.png" id="9_1qxy8"]
+[ext_resource type="Texture2D" uid="uid://booxuup4i5j" path="res://materials/LADX_Great_Fairy_Sprite09.png" id="10_db4xp"]
+[ext_resource type="Texture2D" uid="uid://bqh8rsssjnp80" path="res://materials/LADX_Great_Fairy_Sprite10.png" id="11_3jylv"]
+[ext_resource type="Texture2D" uid="uid://ctbuwcngaginq" path="res://materials/LADX_Great_Fairy_Sprite11.png" id="12_yagf1"]
+[ext_resource type="Texture2D" uid="uid://coeysqiunutun" path="res://materials/LADX_Great_Fairy_Sprite12.png" id="13_nmho1"]
+[ext_resource type="Texture2D" uid="uid://bp1j8m2nbabcn" path="res://materials/LADX_Great_Fairy_Sprite13.png" id="14_k7amu"]
+[ext_resource type="Texture2D" uid="uid://cbotg4r3drj6t" path="res://materials/LADX_Great_Fairy_Sprite14.png" id="15_a504p"]
+[ext_resource type="Texture2D" uid="uid://pseocni3xkk4" path="res://materials/LADX_Great_Fairy_Sprite15.png" id="16_8s07o"]
+[ext_resource type="Texture2D" uid="uid://d1ebc6hb68n0b" path="res://materials/LADX_Great_Fairy_Sprite16.png" id="17_biyoe"]
+[ext_resource type="Texture2D" uid="uid://camhnq7wfferp" path="res://materials/2d_lights_and_shadows_neutral_point_light.webp" id="18_x147b"]
+
+[node name="FairySprite" type="Node2D"]
+script = ExtResource("1_06ury")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="LadxGreatFairySprite01" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_kqu1f")
+
+[node name="LadxGreatFairySprite02" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_pa0fs")
+
+[node name="LadxGreatFairySprite03" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_684a6")
+
+[node name="LadxGreatFairySprite04" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("5_dxql3")
+
+[node name="LadxGreatFairySprite05" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("6_5eky0")
+
+[node name="LadxGreatFairySprite06" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("7_8fnas")
+
+[node name="LadxGreatFairySprite07" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("8_2ac3w")
+
+[node name="LadxGreatFairySprite08" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("9_1qxy8")
+
+[node name="LadxGreatFairySprite09" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("10_db4xp")
+
+[node name="LadxGreatFairySprite10" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("11_3jylv")
+
+[node name="LadxGreatFairySprite11" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("12_yagf1")
+
+[node name="LadxGreatFairySprite12" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("13_nmho1")
+
+[node name="LadxGreatFairySprite13" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("14_k7amu")
+
+[node name="LadxGreatFairySprite14" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("15_a504p")
+
+[node name="LadxGreatFairySprite15" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("16_8s07o")
+
+[node name="LadxGreatFairySprite16" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("17_biyoe")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 10.0
+texture = ExtResource("18_x147b")
