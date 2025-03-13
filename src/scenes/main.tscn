@@ -224,6 +224,7 @@ texture = SubResource("GradientTexture2D_uvf0e")
 position = Vector2(818, 458)
 period = 0.1
 lightColor = Color(0, 1, 0, 1)
+spinSpeed = 0.75
 
 [node name="fairy_move2" parent="." instance=ExtResource("13_0mnwe")]
 position = Vector2(892, 380)
@@ -233,6 +234,7 @@ lightColor = Color(1, 0, 0, 1)
 position = Vector2(764, 392)
 period = 0.4
 lightColor = Color(0, 0, 1, 1)
+spinSpeed = 1.5
 
 [node name="monkebars" parent="." instance=ExtResource("1")]
 position = Vector2(890, 437)

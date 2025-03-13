@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cbotg4r3drj6t" path="res://materials/LADX_Great_Fairy_Sprite14.png" id="15_a504p"]
 [ext_resource type="Texture2D" uid="uid://pseocni3xkk4" path="res://materials/LADX_Great_Fairy_Sprite15.png" id="16_8s07o"]
 [ext_resource type="Texture2D" uid="uid://d1ebc6hb68n0b" path="res://materials/LADX_Great_Fairy_Sprite16.png" id="17_biyoe"]
-[ext_resource type="Texture2D" uid="uid://camhnq7wfferp" path="res://materials/2d_lights_and_shadows_neutral_point_light.webp" id="18_x147b"]
+[ext_resource type="Texture2D" uid="uid://dw526dli886j2" path="res://scenes/myPointLight.tres" id="18_afyoh"]
 
 [node name="FairySprite" type="Node2D"]
 script = ExtResource("1_06ury")
@@ -90,4 +90,5 @@ texture = ExtResource("17_biyoe")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 10.0
-texture = ExtResource("18_x147b")
+texture = ExtResource("18_afyoh")
+texture_scale = 4.2

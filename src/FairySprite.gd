@@ -1,7 +1,7 @@
 extends Node2D
 
 @export
-var period :float = .2
+var period: float = .2
 
 @export
 var lightColor :Color :set=SetLightColor
