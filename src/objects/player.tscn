@@ -1,22 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://x1h6alnnehtu"]
+[gd_scene load_steps=5 format=3 uid="uid://x1h6alnnehtu"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_gmi62"]
 [ext_resource type="Texture2D" uid="uid://77sk1235c1ny" path="res://materials/monke.png" id="2_v0fsa"]
+[ext_resource type="Texture2D" uid="uid://nv8wp7jgpwtv" path="res://materials/legs.png" id="3_f75gm"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 22.05
 
 [node name="player" type="CharacterBody2D"]
-position = Vector2(255, 158)
+position = Vector2(0, 1)
 motion_mode = 1
 script = ExtResource("1_gmi62")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 3)
+position = Vector2(-1, -1)
 shape = SubResource("1")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(224, 25)
-scale = Vector2(0.352364, 0.368132)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="LegsSprite" type="Node2D" parent="Node2D"]
+position = Vector2(0, 16)
+
+[node name="LegsSpriteAnimation" type="Sprite2D" parent="Node2D/LegsSprite"]
+position = Vector2(0, 3)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_f75gm")
+
+[node name="TorsoSprite" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -13)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_v0fsa")
-offset = Vector2(-643, -67)

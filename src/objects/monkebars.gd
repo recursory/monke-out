@@ -15,6 +15,6 @@ func myphys_apply_inverse_parent(delta:float) -> void:
 	$RigidBody2D.position = Vector2(0.,0.)
 
 func on_bump(other:PhysicsBody2D):
-	print("monkeybars.gd",self,".on_click(",other,")")
-	
+	#print("monkeybars.gd",self,".on_click(",other,")")
+	pass
 	

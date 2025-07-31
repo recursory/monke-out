@@ -14,7 +14,7 @@ func SetLightColor(color:Color):
 var spinSpeed : float = 1.0 :set=SetSpinSpeed
 func SetSpinSpeed(spinSpeed2:float):
 	spinSpeed = spinSpeed2
-	print("spinSpeed 1,2: ", spinSpeed, ",", spinSpeed2)
+	#print("spinSpeed 1,2: ", spinSpeed, ",", spinSpeed2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +25,7 @@ func _ready():
 func _process(delta):
 	$".".rotation += (delta * spinSpeed)
 	$FairySprite.rotation -= (delta * spinSpeed)
-	print(spinSpeed)
+	#(spinSpeed)
 	if fmod($".".rotation, 2.0*PI) > PI:
 		$FairySprite.scale.x = -1
 	else:

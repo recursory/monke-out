@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed: float = 200.0 # pixels per second
 
 var acceleration = Vector2()
+var step_ticker
+@export var step_dist: float = 60
 @onready var body = self
 
 # todo loading screen during this startup time cost
@@ -28,7 +30,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	velocity += (acceleration * delta)
-	self.rotation = velocity.angle()
+	$Node2D/LegsSprite.rotation = velocity.angle()
 	var travel = velocity*delta
 	var hittest: KinematicCollision2D = body.move_and_collide(travel, true)
 	if not hittest:
@@ -73,7 +75,7 @@ func _physics_process(delta):
 		
 		# logical collision
 		var other_obj = other.get_parent()
-		print("player.gd._physics_process:hittest:", hittest, ":", other_obj, ".on_bump(", self, ")")
+		#print("player.gd._physics_process:hittest:", hittest, ":", other_obj, ".on_bump(", self, ")")
 		other_obj.on_bump(self)
 	
 	acceleration *= (0.95) # dampening
@@ -81,6 +83,12 @@ func _physics_process(delta):
 	
 	_physics_process2(delta)
 	#print(delta, ", ", velocity_)
+	var pos = self.position
+	var mouse = get_viewport().get_mouse_position()
+	#print(pos)
+	#print(mouse)
+	var look_vect = pos - mouse
+	$Node2D/TorsoSprite.rotation = look_vect.angle()
 
 @onready var debug_line = $"../debug/Line2D"
 
@@ -109,6 +117,7 @@ func _ready():
 	$"../debug".add_child(debugline_player_to_right_extended)
 	$"../debug".add_child(debugline_player_to_left_raycast_test)
 	$"../debug".add_child(debugline_player_to_left_raycast_result)
+	step_ticker = 0
 
 @onready var pillars = $"../pillars"
 @onready var window_bounds = $"../debug/Line2D2"
@@ -133,6 +142,12 @@ func _process(_delta):
 		left_vect = Vector2(left + child.position)
 		child_pos = child.position
 		right_vect = Vector2(right + child.position)
+		
+		if step_ticker <= 0:
+			_leg_step()
+			step_ticker = step_dist
+			print("pooP")
+		step_ticker -= velocity.length() * _delta
 		break
 		
 var tripline
@@ -180,3 +195,10 @@ func _physics_process2(_delta):
 		debugline_player_to_left_raycast_result.arrowtail = debugline_player_to_left_raycast_test.arrowtail
 		debugline_player_to_left_raycast_result.arrowhead = result.position
 	
+func _leg_step():
+	# we'll have a ticker that ticks down every <time> by a multiple of the velocity
+	# and when this timer reaches zero, we'll run this code
+	# it's possible this would be better served by just tracking the distance moved
+	# but this is what i thought of!
+	
+	$Node2D/LegsSprite/LegsSpriteAnimation.flip_h = false if $Node2D/LegsSprite/LegsSpriteAnimation.flip_h else true
