@@ -1,3 +1,4 @@
+class_name MonkePlayer
 extends CharacterBody2D
 
 @export var speed: float = 200.0 # pixels per second
@@ -146,7 +147,7 @@ func _process(_delta):
 		if step_ticker <= 0:
 			_leg_step()
 			step_ticker = step_dist
-			print("pooP")
+			$Node2D/LegsSprite/LegsSpriteAnimation/FootstepPlayer.play()
 		step_ticker -= velocity.length() * _delta
 		break
 		
