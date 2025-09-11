@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dslrnutsyism5"]
+
+[ext_resource type="Script" path="res://scenes/zomby.gd" id="1_oyfl6"]
+[ext_resource type="Texture2D" uid="uid://cy8i3w17epf3k" path="res://materials/zomby.png" id="2_07hcr"]
+[ext_resource type="AudioStream" uid="uid://pkhg5togfpyg" path="res://materials/zomby step.mp3" id="3_hbq24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kmdb"]
+size = Vector2(124, 246)
+
+[node name="zomby" type="Node2D"]
+scale = Vector2(0.5, 0.3)
+script = ExtResource("1_oyfl6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 5)
+shape = SubResource("RectangleShape2D_4kmdb")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_07hcr")
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hbq24")
