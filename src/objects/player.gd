@@ -76,8 +76,9 @@ func _physics_process(delta):
 		
 		# logical collision
 		var other_obj = other.get_parent()
+		if other_obj.has_method("on_bump"):
 		#print("player.gd._physics_process:hittest:", hittest, ":", other_obj, ".on_bump(", self, ")")
-		other_obj.on_bump(self)
+			other_obj.on_bump(self)
 	
 	acceleration *= (0.95) # dampening
 	velocity *= (0.95) # dampening
@@ -100,6 +101,7 @@ var debugline_player_to_right_extended = null
 var debugline_player_to_left_raycast_test = null
 var debugline_player_to_left_raycast_result = null
 func _ready():
+	print(get_path())
 	tripline = Line2D.new()
 	$"../debug".add_child(tripline)
 	tripline.visible = false # introducing new debugline devtool instead

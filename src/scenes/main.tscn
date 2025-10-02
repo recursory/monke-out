@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=29 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uvd4o"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dvphatnfrecnd" path="res://scenes/fairy_move.tscn" id="12_74jpi"]
 [ext_resource type="PackedScene" uid="uid://dn4xwj13qfr8u" path="res://scenes/fairy_move_2.tscn" id="13_0mnwe"]
 [ext_resource type="PackedScene" uid="uid://dslrnutsyism5" path="res://scenes/zomby.tscn" id="14_xgc0i"]
+[ext_resource type="PackedScene" uid="uid://clp1vvgt6v4av" path="res://scenes/bullet.tscn" id="15_7wy30"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"
@@ -242,3 +243,5 @@ position = Vector2(890, 437)
 
 [node name="zomby" parent="." instance=ExtResource("14_xgc0i")]
 position = Vector2(407, 239)
+
+[node name="bullet" parent="." instance=ExtResource("15_7wy30")]

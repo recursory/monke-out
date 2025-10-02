@@ -30,6 +30,7 @@ texture = ExtResource("3_f75gm")
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="Node2D/LegsSprite/LegsSpriteAnimation"]
 stream = ExtResource("3_2i5kj")
+volume_db = -20.905
 
 [node name="TorsoSprite" type="Sprite2D" parent="Node2D"]
 position = Vector2(0, -13)

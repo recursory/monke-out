@@ -5,20 +5,21 @@
 [ext_resource type="AudioStream" uid="uid://pkhg5togfpyg" path="res://materials/zomby step.mp3" id="3_hbq24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kmdb"]
-size = Vector2(124, 246)
+size = Vector2(77, 89)
 
-[node name="zomby" type="Node2D"]
-scale = Vector2(0.5, 0.3)
+[node name="zomby" type="RigidBody2D"]
 script = ExtResource("1_oyfl6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 5)
+position = Vector2(5.5, -1.5)
 shape = SubResource("RectangleShape2D_4kmdb")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+scale = Vector2(0.5, 0.3)
 texture = ExtResource("2_07hcr")
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hbq24")
+volume_db = -20.382
