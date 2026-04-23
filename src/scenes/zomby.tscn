@@ -8,7 +8,10 @@
 size = Vector2(77, 89)
 
 [node name="zomby" type="RigidBody2D"]
+lock_rotation = true
 script = ExtResource("1_oyfl6")
+target = null
+step_dist = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, -1.5)
