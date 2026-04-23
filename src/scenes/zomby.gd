@@ -1,7 +1,14 @@
 extends RigidBody2D
+class_name mo_Zomby
 var speed = 5
 var step_tricker
-@export var target: Vector2 = Vector2(Vector2.ZERO)
+@export var target: Vector2 = Vector2.ZERO:
+	set(value):
+		target = value
+		# Insert logic here (e.g., update a pathfinder or sprite)
+		#print("Target updated to: ", target)
+	get:
+		return target
 @export var step_dist: float = 1
 var biggest_delta_so_far
 var last_bump

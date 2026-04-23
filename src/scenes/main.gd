@@ -8,7 +8,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	my_process_debug(delta)
-	$zomby.target = $player.position
+	#$zomby.target = $player.position
+	#$zomby2.target = $player.position
+	var all_zombies = find_children("*").filter(func(node): return node is mo_Zomby)
+
+	for zomby in all_zombies:
+		zomby.target = $player.position
 
 func my_process_debug(delta: float) -> void:
 	my_process_debug_demo_debugline(delta)
