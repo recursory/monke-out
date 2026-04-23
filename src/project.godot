@@ -20,6 +20,10 @@ config/icon="res://icon.png"
 
 window/stretch/mode="viewport"
 
+[autoload]
+
+State="*res://state.gd"
+
 [dotnet]
 
 project/assembly_name="Shedemon"

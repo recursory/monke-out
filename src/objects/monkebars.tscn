@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvhdyeq1qnwnh"]
+[gd_scene load_steps=7 format=3 uid="uid://cvhdyeq1qnwnh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lhxx3k5mvsb" path="res://materials/monkebars.png" id="1"]
 [ext_resource type="Script" path="res://objects/monkebars.gd" id="2"]
@@ -6,6 +6,12 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fld5n"]
 friction = 0.95
 bounce = 0.1
+
+[sub_resource type="GDScript" id="GDScript_vy38q"]
+script/source = "extends RigidBody2D
+func on_bump(other):
+	print(\"oh, excuse me !\")
+"
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 21.0238
@@ -19,6 +25,7 @@ script = ExtResource("2")
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_fld5n")
 gravity_scale = 0.0
+script = SubResource("GDScript_vy38q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("1")
