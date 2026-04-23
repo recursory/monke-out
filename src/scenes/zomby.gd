@@ -4,7 +4,7 @@ var step_tricker
 @export var target: Vector2 = Vector2(Vector2.ZERO)
 @export var step_dist: float = 1
 var biggest_delta_so_far
-var last_bump
+var last_bump = [0]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.y = 500
@@ -38,34 +38,45 @@ func on_bump(player):
 	print("ouchie!")
 	pass
 
+
+
 func get_mything(phys_results: KinematicCollision2D):
-	if phys_results == null:
-		return
-	if last_bump == phys_results.get_collider_id():
-		return
-	last_bump = phys_results.get_collider_id()
-	var other = phys_results.get_collider()
-	if other.has_method("on_bump"):
-		other.on_bump(self)
-		return
-	var other_parent:Node2D = other.get_parent()
-	#print(other_parent)
-	if other_parent.to_string().contains("main"):
-		return
-	if other_parent.has_method("on_bump"):
-		other_parent.on_bump(self)
-		return
+	State.handle_collision(phys_results, self, last_bump)
+	
+	#if phys_results == null:
+		#return
+	#if last_bump == phys_results.get_collider_id():
+		#return
+	#last_bump = phys_results.get_collider_id()
+	#var other = phys_results.get_collider()
+	#if other.has_method("on_bump"):
+		#other.on_bump(self)
+		#return
+	#else:
+		#assert(false, other.get_path())
+		
+	#var other_parent:Node2D = other.get_parent()
+	##print(other_parent)
+	#if other_parent.to_string().contains("main"):
+		#return
+	#if other_parent.has_method("on_bump"):
+		#other_parent.on_bump(self)
+		#return
 		# if other has onbump call it, if other_parent has onbump call it, 
 			# if other parent is main, don't call it
 
-func get_mything2(phys_results: KinematicCollision2D):
-	#decide if other thing is packaged or not
-	if phys_results == null:
-		return
-	if phys_results.get_collider().has_method("on_bump"):
-		if phys_results.get_collider().to_string().contains("main"):
-			return
-		return phys_results.get_collider()
-	return
+#func get_mything2(phys_results: KinematicCollision2D):
+	##decide if other thing is packaged or not
+	#if phys_results == null:
+		#return
+	#if phys_results.get_collider().has_method("on_bump"):
+		#if phys_results.get_collider().to_string().contains("main"):
+			#return
+		#return phys_results.get_collider()
+	#if phys_results.get_collider().get_parent().has_method("on_bump"):
+		#if phys_results.get_collider().get_parent().to_string().contains("main"):
+			#return
+		#return phys_results.get_collider().get_parent()
+	#return
 	
 	

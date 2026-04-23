@@ -5,6 +5,7 @@ func _ready() -> void:
 		'Name:', ProjectSettings.get_setting('application/config/name'),
 		'Version:', ProjectSettings.get_setting('application/config/version'),
 	])
+	State.initialize()
 
 func _process(delta: float) -> void:
 	my_process_debug(delta)
@@ -28,3 +29,4 @@ func my_process_debug_player_sight(delta:float) -> void:
 	$debug/devtools_debugline2.arrowtail = $player.position
 	$debug/devtools_debugline2.arrowhead = $pillars/monkebars.position
 	
+

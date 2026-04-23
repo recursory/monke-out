@@ -205,3 +205,7 @@ func _leg_step():
 	# but this is what i thought of!
 	
 	$Node2D/LegsSprite/LegsSpriteAnimation.flip_h = false if $Node2D/LegsSprite/LegsSpriteAnimation.flip_h else true
+
+func on_bump(other:PhysicsBody2D):
+	print("player.gd",self,".on_click(",other,")")
+	pass

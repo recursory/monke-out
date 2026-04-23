@@ -24,4 +24,7 @@ func _process(delta):
 	#if results != null:
 	#	print(results)
 	pass
-	
+
+func on_bump(other:PhysicsBody2D):
+	print("bang! ",self,".on_click(",other,")")
+	pass
