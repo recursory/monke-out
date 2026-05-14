@@ -1,6 +1,6 @@
 extends RigidBody2D
 var speed = 5
-var step_tricker
+var step_ticker
 @export var target: Vector2 = Vector2(Vector2.ZERO)
 @export var step_dist: float = 1
 var biggest_delta_so_far
@@ -9,7 +9,7 @@ var last_bump = [0]
 func _ready():
 	position.y = 500
 	position.x = 200
-	step_tricker = 0
+	step_ticker = 0
 	biggest_delta_so_far = 0
 
 # Called every frame. 'delta' is the e lapsed time since the previous frame.
@@ -25,11 +25,11 @@ func _process(delta):
 		#position.x -= unit_delta.x * speed
 		#position.y -= unit_delta.y * speed
 		
-	if step_tricker <= 0:
+	if step_ticker <= 0:
 		_leg_step()
-		step_tricker = step_dist
+		step_ticker = step_dist
 		$FootstepPlayer.play()
-	step_tricker -= speed * delta
+	step_ticker -= speed * delta
 
 func _leg_step():
 	$Node2D/Sprite2D.flip_h = false if $Node2D/Sprite2D.flip_h else true
