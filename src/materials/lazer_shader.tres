@@ -63,7 +63,7 @@ render_mode blend_mix;
 uniform vec4 green : source_color = vec4(0.227111, 0.883618, 0.249583, 1.000000);
 uniform vec4 red : source_color = vec4(1.000000, 0.000000, 0.000000, 1.000000);
 uniform float speed;
-uniform float speed2 = 1;
+uniform float speed2 = 1.0;
 
 
 
@@ -140,7 +140,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(13.2411, 198.954)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(600, 60)
