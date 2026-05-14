@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name mo_Zomby
 var speed = 100
-var step_tricker
+var step_ricker
 @export var target: Vector2 = Vector2.ZERO:
 	set(value):
 		target = value
@@ -16,7 +16,7 @@ var last_bump = [0]
 func _ready():
 	position.y = 500
 	position.x = 200
-	step_tricker = 0
+	step_ticker = 0
 	biggest_delta_so_far = 0
 
 #var linear_velecity: Vector2
@@ -33,11 +33,11 @@ func _process(delta):
 		#position.x -= unit_delta.x * speed
 		#position.y -= unit_delta.y * speed
 
-	if step_tricker <= 0:
+	if step_ricker <= 0:
 		_leg_step()
-		step_tricker = step_dist
+		step_ticker = step_dist
 		$FootstepPlayer.play()
-	step_tricker -= speed * delta
+	step_ticker -= speed * delta
 
 #func _physics_procedwss(delta: float) -> void:
 	#if position.distance_squared_to(target) < 1:
