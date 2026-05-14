@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dny8qwaw5odnx"
+path="res://.godot/imported/Footstep Sound Effect [YcGZK0Opf1Q].mp3-4b8c117778a06161d587f38f88de2212.mp3str"
+
+[deps]
+
+source_file="res://materials/Footstep Sound Effect [YcGZK0Opf1Q].mp3"
+dest_files=["res://.godot/imported/Footstep Sound Effect [YcGZK0Opf1Q].mp3-4b8c117778a06161d587f38f88de2212.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

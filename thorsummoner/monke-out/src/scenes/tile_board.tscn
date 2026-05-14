@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://e46igqdysloy"]
+
+[ext_resource type="Shader" uid="uid://dhueakmhe1qg" path="res://scenes/tile_board.tres" id="1_nq6np"]
+[ext_resource type="Shader" uid="uid://bmslsyayq83cq" path="res://scenes/tile_board2.tres" id="2_i7e11"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fygdm"]
+shader = ExtResource("1_nq6np")
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/FloatParameter = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3pg5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ym11"]
+shader = ExtResource("2_i7e11")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/ColorParameter2 = Color(1, 1, 1, 1)
+shader_parameter/FloatParameter = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evtjy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_fygdm")
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3pg5")
+
+[node name="Panel2" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_1ym11")
+offset_left = 46.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_evtjy")
