@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvphatnfrecnd"]
+
+[ext_resource type="Script" path="res://FairyMove.gd" id="1_renxo"]
+[ext_resource type="PackedScene" uid="uid://1mj3edqgqibh" path="res://scenes/fairy_sprite.tscn" id="2_s6fcf"]
+
+[node name="FairyMove" type="Node2D"]
+script = ExtResource("1_renxo")
+
+[node name="FairySprite" parent="." instance=ExtResource("2_s6fcf")]
+position = Vector2(79, 31)
