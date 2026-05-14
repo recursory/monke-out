@@ -34,4 +34,3 @@ func my_process_debug_player_sight(delta:float) -> void:
 	$debug/devtools_debugline2.arrowtail = $player.position
 	$debug/devtools_debugline2.arrowhead = $pillars/monkebars.position
 	
-

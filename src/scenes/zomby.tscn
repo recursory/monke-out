@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dslrnutsyism5"]
 
-[ext_resource type="Script" uid="uid://bp2wkhi6updbu" path="res://scenes/zomby.gd" id="1_oyfl6"]
+[ext_resource type="Script" uid="uid://dasgcywpukep8" path="res://scenes/zomby.gd" id="1_oyfl6"]
 [ext_resource type="Texture2D" uid="uid://cy8i3w17epf3k" path="res://materials/zomby.png" id="2_07hcr"]
 [ext_resource type="AudioStream" uid="uid://pkhg5togfpyg" path="res://materials/zomby step.mp3" id="3_hbq24"]
 

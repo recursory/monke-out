@@ -53,7 +53,7 @@ render_mode blend_mix;
 
 uniform vec4 white : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 uniform vec4 black : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
-uniform float FloatParameter = 8;
+uniform float FloatParameter = 8.0;
 
 
 
