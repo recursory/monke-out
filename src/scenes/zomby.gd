@@ -1,15 +1,15 @@
 extends RigidBody2D
 class_name mo_Zomby
-var speed = 100
+var speed = 5
 var step_ticker
 @export var target: Vector2 = Vector2.ZERO:
 	set(value):
 		target = value
 		# Insert logic here (e.g., update a pathfinder or sprite)
-		# print("Target updated to: ", target)
+		#print("Target updated to: ", target)
 	get:
 		return target
-@export var step_dist: float = 20
+@export var step_dist: float = 1
 var biggest_delta_so_far
 var last_bump = [0]
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,6 @@ func _ready():
 	step_ticker = 0
 	biggest_delta_so_far = 0
 
-#var linear_velecity: Vector2
 # Called every frame. 'delta' is the e lapsed time since the previous frame.
 func _process(delta):
 	if delta > biggest_delta_so_far:
@@ -29,7 +28,7 @@ func _process(delta):
 		var direction = (target - position).normalized()
 		linear_velocity = direction * speed
 
-		print("Zomby dsvelecity updated to: ", linear_velocity)
+		#print("Zomby dsvelecity updated to: ", linear_velocity)
 		#position.x -= unit_delta.x * speed
 		#position.y -= unit_delta.y * speed
 
@@ -59,8 +58,6 @@ func on_bump(player):
 
 
 func get_mything(phys_results: KinematicCollision2D):
-<<<<<<< HEAD
-=======
 	State.handle_collision(phys_results, self, last_bump)
 
 	#if phys_results == null:
@@ -98,4 +95,5 @@ func get_mything(phys_results: KinematicCollision2D):
 			#return
 		#return phys_results.get_collider().get_parent()
 	#return
->>>>>>> 3b04486 (snap)
+
+
