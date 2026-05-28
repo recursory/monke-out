@@ -1,7 +1,14 @@
 extends RigidBody2D
+class_name mo_Zomby
 var speed = 5
 var step_ticker
-@export var target: Vector2 = Vector2(Vector2.ZERO)
+@export var target: Vector2 = Vector2.ZERO:
+	set(value):
+		target = value
+		# Insert logic here (e.g., update a pathfinder or sprite)
+		#print("Target updated to: ", target)
+	get:
+		return target
 @export var step_dist: float = 1
 var biggest_delta_so_far
 var last_bump = [0]
@@ -18,13 +25,13 @@ func _process(delta):
 		print("big delta: ", delta)
 		biggest_delta_so_far = delta
 	if target != Vector2.ZERO:
-		var target_delta = position - target
-		var unit_delta = target_delta.normalized()
-		var phys_results: KinematicCollision2D = move_and_collide(-unit_delta * speed)
-		get_mything(phys_results)
+		var direction = (target - position).normalized()
+		linear_velocity = direction * speed
+
+		#print("Zomby dsvelecity updated to: ", linear_velocity)
 		#position.x -= unit_delta.x * speed
 		#position.y -= unit_delta.y * speed
-		
+
 	if step_ticker <= 0:
 		_leg_step()
 		step_ticker = step_dist
@@ -33,7 +40,7 @@ func _process(delta):
 
 func _leg_step():
 	$Node2D/Sprite2D.flip_h = false if $Node2D/Sprite2D.flip_h else true
-	
+
 func on_bump(player):
 	print("ouchie!")
 	pass
@@ -42,7 +49,7 @@ func on_bump(player):
 
 func get_mything(phys_results: KinematicCollision2D):
 	State.handle_collision(phys_results, self, last_bump)
-	
+
 	#if phys_results == null:
 		#return
 	#if last_bump == phys_results.get_collider_id():
@@ -54,7 +61,7 @@ func get_mything(phys_results: KinematicCollision2D):
 		#return
 	#else:
 		#assert(false, other.get_path())
-		
+
 	#var other_parent:Node2D = other.get_parent()
 	##print(other_parent)
 	#if other_parent.to_string().contains("main"):
@@ -62,7 +69,7 @@ func get_mything(phys_results: KinematicCollision2D):
 	#if other_parent.has_method("on_bump"):
 		#other_parent.on_bump(self)
 		#return
-		# if other has onbump call it, if other_parent has onbump call it, 
+		# if other has onbump call it, if other_parent has onbump call it,
 			# if other parent is main, don't call it
 
 #func get_mything2(phys_results: KinematicCollision2D):
@@ -78,5 +85,5 @@ func get_mything(phys_results: KinematicCollision2D):
 			#return
 		#return phys_results.get_collider().get_parent()
 	#return
-	
-	
+
+
