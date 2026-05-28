@@ -1,12 +1,12 @@
 extends RigidBody2D
 class_name mo_Zomby
 var speed = 100
-var step_ricker
+var step_ticker
 @export var target: Vector2 = Vector2.ZERO:
 	set(value):
 		target = value
 		# Insert logic here (e.g., update a pathfinder or sprite)
-		#print("Target updated to: ", target)
+		# print("Target updated to: ", target)
 	get:
 		return target
 @export var step_dist: float = 20
@@ -33,7 +33,7 @@ func _process(delta):
 		#position.x -= unit_delta.x * speed
 		#position.y -= unit_delta.y * speed
 
-	if step_ricker <= 0:
+	if step_ticker <= 0:
 		_leg_step()
 		step_ticker = step_dist
 		$FootstepPlayer.play()
@@ -59,3 +59,43 @@ func on_bump(player):
 
 
 func get_mything(phys_results: KinematicCollision2D):
+<<<<<<< HEAD
+=======
+	State.handle_collision(phys_results, self, last_bump)
+
+	#if phys_results == null:
+		#return
+	#if last_bump == phys_results.get_collider_id():
+		#return
+	#last_bump = phys_results.get_collider_id()
+	#var other = phys_results.get_collider()
+	#if other.has_method("on_bump"):
+		#other.on_bump(self)
+		#return
+	#else:
+		#assert(false, other.get_path())
+
+	#var other_parent:Node2D = other.get_parent()
+	##print(other_parent)
+	#if other_parent.to_string().contains("main"):
+		#return
+	#if other_parent.has_method("on_bump"):
+		#other_parent.on_bump(self)
+		#return
+		# if other has onbump call it, if other_parent has onbump call it,
+			# if other parent is main, don't call it
+
+#func get_mything2(phys_results: KinematicCollision2D):
+	##decide if other thing is packaged or not
+	#if phys_results == null:
+		#return
+	#if phys_results.get_collider().has_method("on_bump"):
+		#if phys_results.get_collider().to_string().contains("main"):
+			#return
+		#return phys_results.get_collider()
+	#if phys_results.get_collider().get_parent().has_method("on_bump"):
+		#if phys_results.get_collider().get_parent().to_string().contains("main"):
+			#return
+		#return phys_results.get_collider().get_parent()
+	#return
+>>>>>>> 3b04486 (snap)

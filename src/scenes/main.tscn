@@ -241,8 +241,12 @@ position = Vector2(890, 437)
 
 [node name="zomby" parent="." instance=ExtResource("14_xgc0i")]
 position = Vector2(407, 239)
+target = Vector2(0, 0)
+step_dist = 20.0
 
 [node name="zomby2" parent="." instance=ExtResource("14_xgc0i")]
 position = Vector2(1437, 542)
+target = Vector2(0, 0)
+step_dist = 20.0
 
 [node name="bullet" parent="." instance=ExtResource("15_7wy30")]
