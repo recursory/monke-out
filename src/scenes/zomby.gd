@@ -38,16 +38,6 @@ func _process(delta):
 		$FootstepPlayer.play()
 	step_ticker -= speed * delta
 
-#func _physics_procedwss(delta: float) -> void:
-	#if position.distance_squared_to(target) < 1:
-		#print('too close')
-		#return
-	#
-	#if target != Vector2.ZERO:
-		#var directory
-		#var phys_results: KinematicCollision2D = move_and_collide(velecity * delta * speed)
-		#get_mything(phys_results)
-
 func _leg_step():
 	$Node2D/Sprite2D.flip_h = false if $Node2D/Sprite2D.flip_h else true
 
