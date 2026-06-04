@@ -85,5 +85,3 @@ func get_mything(phys_results: KinematicCollision2D):
 			#return
 		#return phys_results.get_collider().get_parent()
 	#return
-
-
