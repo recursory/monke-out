@@ -1,5 +1,6 @@
 class_name MonkePlayer
 extends CharacterBody2D
+@export var torso_sprite: Node2D
 
 @export var speed: float = 200.0 # pixels per second
 
@@ -11,6 +12,8 @@ var step_ticker
 # todo loading screen during this startup time cost
 @onready var dep_my_costmarker : PackedScene = preload("res://devtools/costmarker.tscn")
 @onready var dep_my_debugline : PackedScene = preload("res://devtools/debugline.tscn")
+@onready var dep_my_bullet : PackedScene = preload("res://scenes/bullet.tscn")
+var my_bullet = null
 
 const my_collision_mask_SCREEN : int = 2
 @export var mymass: float = 1.0 # kg
@@ -26,6 +29,11 @@ func get_input():
 	if Input.is_action_pressed("ui_up") or Input.is_key_pressed(KEY_W):
 		jolt.y -= 1
 	acceleration += jolt.normalized() * speed
+	#if event is InputEventMouseButton and event.is_pressed():
+	if Input.is_action_pressed("ui_accept") or Input.is_key_pressed(KEY_SPACE):
+		my_bullet = dep_my_bullet.instantiate()
+		$"../bullets".add_child(my_bullet)
+		my_bullet.shoot(self)
 
 
 func _physics_process(delta):
@@ -101,6 +109,7 @@ var debugline_player_to_right_extended = null
 var debugline_player_to_left_raycast_test = null
 var debugline_player_to_left_raycast_result = null
 func _ready():
+	torso_sprite = $Node2D/TorsoSprite
 	print(get_path())
 	tripline = Line2D.new()
 	$"../debug".add_child(tripline)

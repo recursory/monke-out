@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=28 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" uid="uid://bt1ln5bu1jcme" path="res://scenes/main.gd" id="1_uvd4o"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dltf6c3fkp2yn" path="res://objects/monkewall.tscn" id="4"]
 [ext_resource type="Shader" uid="uid://bs7x2onxixxga" path="res://materials/lazer_shader.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://bdgj5japtrf1m" path="res://materials/redroom.png" id="5_xthok"]
-[ext_resource type="Script" uid="uid://bdx50nv4kljg2" path="res://scenes/Line2D2.gd" id="7_a85lx"]
+[ext_resource type="Script" uid="uid://d31h12aybe44t" path="res://scenes/Line2D2.gd" id="7_a85lx"]
 [ext_resource type="Shader" uid="uid://b4b5s60c8nhij" path="res://materials/error.gdshader" id="7_itmio"]
 [ext_resource type="PackedScene" uid="uid://8tvwpajdqjlc" path="res://devtools/debugline.tscn" id="8_war26"]
 [ext_resource type="Texture2D" uid="uid://qyoi6n11vqg5" path="res://materials/funnylamp.png" id="10_gv5ar"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dvphatnfrecnd" path="res://scenes/fairy_move.tscn" id="12_74jpi"]
 [ext_resource type="PackedScene" uid="uid://dn4xwj13qfr8u" path="res://scenes/fairy_move_2.tscn" id="13_0mnwe"]
 [ext_resource type="PackedScene" uid="uid://dslrnutsyism5" path="res://scenes/zomby.tscn" id="14_xgc0i"]
-[ext_resource type="PackedScene" uid="uid://clp1vvgt6v4av" path="res://scenes/bullet.tscn" id="15_7wy30"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"
@@ -245,4 +244,4 @@ position = Vector2(407, 239)
 [node name="zomby2" parent="." instance=ExtResource("14_xgc0i")]
 position = Vector2(1437, 542)
 
-[node name="bullet" parent="." instance=ExtResource("15_7wy30")]
+[node name="bullets" type="Node2D" parent="."]
