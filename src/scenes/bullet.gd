@@ -1,27 +1,30 @@
-extends Area2D
-@export var Bullet : PackedScene
+extends RigidBody2D
 
-var bullet_speed = 200
+var bullet_speed = 20
 
 func _ready():
-	pass
+	#visible = false
+	#collision_mask = 0
+	position.x = 0
+	position.y = 0
+
+func _input(event: InputEvent):
+	if event is InputEventMouseButton and event.is_pressed():
+		var player = $/root/main/player
+		#visible = true
+		position = player.position
+		self.rotation = (player.position-event.position).angle()
+		print("bang!")
 		
-func _physics_process(delta: float):
-	position += transform.x * bullet_speed * delta
+func _process(delta):
+	var direction = Vector2(-1, 0)
+	direction = direction.rotated(self.rotation)
+	position = position + direction * bullet_speed * delta
+	var results = move_and_collide(direction * bullet_speed * delta)
+	#if results != null:
+	#	print(results)
 	pass
 
 func on_bump(other:PhysicsBody2D):
 	print("bang! ",self,".on_click(",other,")")
 	pass
-
-func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("zomby"):
-		body.queue_free()
-	# 'body' is the object you just ran into!
-	print("Collided with: ", body.name)
-	#queue_free()
-	pass
-	
-func shoot(player : MonkePlayer):
-	self.transform = player.torso_sprite.global_transform
-	self.global_transform = self.global_transform.rotated(PI/100)	
