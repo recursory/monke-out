@@ -1,6 +1,6 @@
 extends RigidBody2D
 class_name mo_Zomby
-var speed = 5
+var speed = 60.0
 var step_ticker
 @export var target: Vector2 = Vector2.ZERO:
 	set(value):
@@ -9,13 +9,13 @@ var step_ticker
 		#print("Target updated to: ", target)
 	get:
 		return target
-@export var step_dist: float = 1
+@export var step_dist: float = 10
 var biggest_delta_so_far
 var last_bump = [0]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.y = 500
-	position.x = 200
+	position.y = 200
+	position.x = 500
 	step_ticker = 0
 	biggest_delta_so_far = 0
 
@@ -36,7 +36,7 @@ func _process(delta):
 		_leg_step()
 		step_ticker = step_dist
 		$FootstepPlayer.play()
-	step_ticker -= speed * delta
+	step_ticker -= linear_velocity.length() * delta
 
 func _leg_step():
 	$Node2D/Sprite2D.flip_h = false if $Node2D/Sprite2D.flip_h else true
