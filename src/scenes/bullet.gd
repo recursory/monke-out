@@ -10,6 +10,7 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
+		set_deferred("freeze", true)
 		var player = $/root/main/player
 		#visible = true
 		position = player.position
