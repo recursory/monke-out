@@ -16,7 +16,7 @@ const my_collision_mask_SCREEN : int = 2
 @export var mymass: float = 1.0 # kg
 func get_input():
 	var jolt = Vector2()
-		
+
 	if Input.is_action_pressed("ui_right") or Input.is_key_pressed(KEY_D):
 		jolt.x += 1
 	if Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A):
@@ -47,21 +47,19 @@ func _physics_process(delta):
 			collision_right = null # inf resistance?
 		else:
 			push_error('player._physics_process: NotImplementedError:  collision with {0}'.format([other]))
-		var partial_travel = hittest.get_travel()
 		#body.move_and_slide()
 		var was_accel = acceleration
 		var was_vel = velocity * 1.0
 		var was_pos = position
 		body.move_and_collide(velocity)
-		var realized_travel = (position - was_pos)
-		
+
 		acceleration = velocity - was_vel
 		velocity = position - was_pos
-		
+
 		var delta_v : Vector2 = velocity - was_vel
 		var delta_a : Vector2  = acceleration - was_accel
 		var magnitude : float = delta_v.length()
-		
+
 		var do_costmarker : bool = magnitude > 10.0
 		if do_costmarker:
 			var costmarker = dep_my_costmarker.instantiate()
@@ -72,40 +70,28 @@ func _physics_process(delta):
 				magnitude,
 			])
 			self.get_parent().add_child(costmarker)
-		
-		
+
 		# logical collision
 		var other_obj = other.get_parent()
 		if other_obj.has_method("on_bump"):
-		#print("player.gd._physics_process:hittest:", hittest, ":", other_obj, ".on_bump(", self, ")")
 			other_obj.on_bump(self)
-	
+
 	acceleration *= (0.95) # dampening
 	velocity *= (0.95) # dampening
-	
-	_physics_process2(delta)
-	#print(delta, ", ", velocity_)
+
 	var pos = self.position
 	var mouse = get_viewport().get_mouse_position()
-	#print(pos)
-	#print(mouse)
 	var look_vect = pos - mouse
 	$Node2D/TorsoSprite.rotation = look_vect.angle()
 
 @onready var debug_line = $"../debug/Line2D"
 
-var debugline_player_to_left = null
-var debugline_player_to_right = null
-var debugline_player_to_left_extended = null
-var debugline_player_to_right_extended = null
-var debugline_player_to_left_raycast_test = null
-var debugline_player_to_left_raycast_result = null
 func _ready():
 	print(get_path())
 	#tripline = Line2D.new()
 	#$"../debug".add_child(tripline)
 	#tripline.visible = false # introducing new debugline devtool instead
-	
+
 	#debug_line.position = body.position  + Vector2(50, 50)
 	#print(debug_line.position, ", ", body.position)
 	debugline_player_to_left = dep_my_debugline.instantiate()
@@ -130,7 +116,7 @@ var child_pos
 func _process(_delta):
 	#debug_line.clear_points()
 	#debug_line.add_point(body.position)
-	
+
 	#for child in pillars.get_children():
 		#var left = Vector2(-child.radius, 0)
 		#var right = Vector2(child.radius, 0)
@@ -146,29 +132,34 @@ func _process(_delta):
 		#child_pos = child.position
 		#right_vect = Vector2(right + child.position)
 		#dbreak
-		
+
+	step_ticker = 0
+
+@onready var pillars = $"../pillars"
+
+func _process(_delta):
 	if step_ticker <= 0:
 		_leg_step()
 		step_ticker = step_dist
 		$Node2D/LegsSprite/LegsSpriteAnimation/FootstepPlayer.play()
 	step_ticker -= velocity.length() * _delta
-		
+
 var tripline
 func _physics_process2(_delta):
 	var space_state = get_world_2d().direct_space_state
 	var ray_startpoint : Vector2
 	var ray_endpoint : Vector2
-	
+
 	#if 'tripline debug':
 		#tripline.clear_points()
 		#if !left_vect:
 			#return
 		##var hittest: KinematicCollision2D = body.move_and_collide(velocity_)
-		##endpoint = -(body.position - left_vect) + child_pos 
+		##endpoint = -(body.position - left_vect) + child_pos
 #
 		#tripline.add_point(Vector2(left_vect.x,left_vect.y), 0)
 		#tripline.add_point(ray_endpoint, 1)
-	
+
 	#if 'debugline debug':
 		#debugline_player_to_left.arrowtail = self.position
 		#debugline_player_to_left.arrowhead = left_vect
@@ -186,24 +177,23 @@ func _physics_process2(_delta):
 		#debugline_player_to_left_raycast_test.arrowhead =  left_vect + (((left_vect - self.position).normalized()) * 1000.0)
 		#ray_startpoint = debugline_player_to_left_raycast_test.arrowtail
 		#ray_endpoint = debugline_player_to_left_raycast_test.arrowhead
-	
+
 	var query = PhysicsRayQueryParameters2D.create(ray_startpoint, ray_endpoint, my_collision_mask_SCREEN)
-	
+
 	var result : Dictionary = space_state.intersect_ray(query)
 	debugline_player_to_left_raycast_test.visible = result.is_empty()
 	debugline_player_to_left_raycast_result.visible = not result.is_empty()
 	if result:
 		#print("Hit at point: ", result.position)
-		
+
 		debugline_player_to_left_raycast_result.arrowtail = debugline_player_to_left_raycast_test.arrowtail
 		debugline_player_to_left_raycast_result.arrowhead = result.position
-	
+
 func _leg_step():
 	# we'll have a ticker that ticks down every <time> by a multiple of the velocity
 	# and when this timer reaches zero, we'll run this code
 	# it's possible this would be better served by just tracking the distance moved
 	# but this is what i thought of!
-	
 	$Node2D/LegsSprite/LegsSpriteAnimation.flip_h = false if $Node2D/LegsSprite/LegsSpriteAnimation.flip_h else true
 
 func on_bump(other:PhysicsBody2D):
