@@ -94,12 +94,12 @@ func _ready():
 
 	#debug_line.position = body.position  + Vector2(50, 50)
 	#print(debug_line.position, ", ", body.position)
-	debugline_player_to_left = dep_my_debugline.instantiate()
-	debugline_player_to_right = dep_my_debugline.instantiate()
-	debugline_player_to_left_extended = dep_my_debugline.instantiate()
-	debugline_player_to_right_extended = dep_my_debugline.instantiate()
-	debugline_player_to_left_raycast_test = dep_my_debugline.instantiate()
-	debugline_player_to_left_raycast_result = dep_my_debugline.instantiate()
+	#debugline_player_to_left = dep_my_debugline.instantiate()
+	#debugline_player_to_right = dep_my_debugline.instantiate()
+	#debugline_player_to_left_extended = dep_my_debugline.instantiate()
+	#debugline_player_to_right_extended = dep_my_debugline.instantiate()
+	#debugline_player_to_left_raycast_test = dep_my_debugline.instantiate()
+	#debugline_player_to_left_raycast_result = dep_my_debugline.instantiate()
 	#$"../debug".add_child(debugline_player_to_left)
 	#$"../debug".add_child(debugline_player_to_right)
 	#$"../debug".add_child(debugline_player_to_left_extended)
@@ -133,11 +133,11 @@ func _process(_delta):
 		#right_vect = Vector2(right + child.position)
 		#dbreak
 
-	step_ticker = 0
+	#step_ticker = 0
 
-@onready var pillars = $"../pillars"
-
-func _process(_delta):
+#@onready var pillars = $"../pillars"
+#
+#func _process(_delta):
 	if step_ticker <= 0:
 		_leg_step()
 		step_ticker = step_dist
@@ -181,13 +181,13 @@ func _physics_process2(_delta):
 	var query = PhysicsRayQueryParameters2D.create(ray_startpoint, ray_endpoint, my_collision_mask_SCREEN)
 
 	var result : Dictionary = space_state.intersect_ray(query)
-	debugline_player_to_left_raycast_test.visible = result.is_empty()
-	debugline_player_to_left_raycast_result.visible = not result.is_empty()
-	if result:
+	#debugline_player_to_left_raycast_test.visible = result.is_empty()
+	#debugline_player_to_left_raycast_result.visible = not result.is_empty()
+	#if result:
 		#print("Hit at point: ", result.position)
 
-		debugline_player_to_left_raycast_result.arrowtail = debugline_player_to_left_raycast_test.arrowtail
-		debugline_player_to_left_raycast_result.arrowhead = result.position
+		#debugline_player_to_left_raycast_result.arrowtail = debugline_player_to_left_raycast_test.arrowtail
+		#debugline_player_to_left_raycast_result.arrowhead = result.position
 
 func _leg_step():
 	# we'll have a ticker that ticks down every <time> by a multiple of the velocity

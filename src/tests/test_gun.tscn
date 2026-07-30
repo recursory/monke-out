@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://o686itwphn6u"]
+[gd_scene load_steps=5 format=3 uid="uid://o686itwphn6u"]
 
 [ext_resource type="PackedScene" uid="uid://x1h6alnnehtu" path="res://objects/player.tscn" id="1_a0pyu"]
 [ext_resource type="PackedScene" uid="uid://dslrnutsyism5" path="res://scenes/zomby.tscn" id="2_4ic1x"]
 [ext_resource type="PackedScene" uid="uid://dltf6c3fkp2yn" path="res://objects/monkewall.tscn" id="3_atg10"]
+[ext_resource type="PackedScene" uid="uid://clp1vvgt6v4av" path="res://scenes/bullet.tscn" id="4_4ic1x"]
 
 [node name="test_gun" type="Node2D"]
 
@@ -31,3 +32,6 @@ scale = Vector2(1, 13.200003)
 [node name="monkewall4" parent="." instance=ExtResource("3_atg10")]
 position = Vector2(483, 10)
 scale = Vector2(23.56, 1)
+
+[node name="bullet" parent="." instance=ExtResource("4_4ic1x")]
+position = Vector2(647, 247)
