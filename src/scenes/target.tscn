@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv5k7o1c5hqur"]
+
+[ext_resource type="Script" uid="uid://bxv66rhqqfgtd" path="res://scenes/bullet.gd" id="1_b5a2r"]
+[ext_resource type="Texture2D" uid="uid://c81jn531xsifo" path="res://materials/bullit.png" id="2_nlbrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er1dk"]
+size = Vector2(34, 33)
+
+[node name="target" type="RigidBody2D"]
+script = ExtResource("1_b5a2r")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 1.9073486e-06)
+rotation = 1.7973
+scale = Vector2(0.14304227, 0.33570662)
+texture = ExtResource("2_nlbrr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 1.9073486e-06)
+rotation = 4.499887
+scale = Vector2(0.14304227, 0.33570662)
+texture = ExtResource("2_nlbrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_er1dk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+rotation = 0.89824045
+shape = SubResource("RectangleShape2D_er1dk")

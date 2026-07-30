@@ -1,0 +1,1 @@
+create a hitscan bullet

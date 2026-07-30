@@ -102,9 +102,9 @@ var debugline_player_to_left_raycast_test = null
 var debugline_player_to_left_raycast_result = null
 func _ready():
 	print(get_path())
-	tripline = Line2D.new()
-	$"../debug".add_child(tripline)
-	tripline.visible = false # introducing new debugline devtool instead
+	#tripline = Line2D.new()
+	#$"../debug".add_child(tripline)
+	#tripline.visible = false # introducing new debugline devtool instead
 	
 	#debug_line.position = body.position  + Vector2(50, 50)
 	#print(debug_line.position, ", ", body.position)
@@ -114,12 +114,12 @@ func _ready():
 	debugline_player_to_right_extended = dep_my_debugline.instantiate()
 	debugline_player_to_left_raycast_test = dep_my_debugline.instantiate()
 	debugline_player_to_left_raycast_result = dep_my_debugline.instantiate()
-	$"../debug".add_child(debugline_player_to_left)
-	$"../debug".add_child(debugline_player_to_right)
-	$"../debug".add_child(debugline_player_to_left_extended)
-	$"../debug".add_child(debugline_player_to_right_extended)
-	$"../debug".add_child(debugline_player_to_left_raycast_test)
-	$"../debug".add_child(debugline_player_to_left_raycast_result)
+	#$"../debug".add_child(debugline_player_to_left)
+	#$"../debug".add_child(debugline_player_to_right)
+	#$"../debug".add_child(debugline_player_to_left_extended)
+	#$"../debug".add_child(debugline_player_to_right_extended)
+	#$"../debug".add_child(debugline_player_to_left_raycast_test)
+	#$"../debug".add_child(debugline_player_to_left_raycast_result)
 	step_ticker = 0
 
 @onready var pillars = $"../pillars"
@@ -128,30 +128,30 @@ var left_vect
 var right_vect
 var child_pos
 func _process(_delta):
-	debug_line.clear_points()
-	debug_line.add_point(body.position)
+	#debug_line.clear_points()
+	#debug_line.add_point(body.position)
 	
-	for child in pillars.get_children():
-		var left = Vector2(-child.radius, 0)
-		var right = Vector2(child.radius, 0)
-		var delta2 = body.position - child.position
-		var atan3 = atan2(delta2.x, delta2.y)
-		left = left.rotated(-atan3)
-		right = right.rotated(-atan3)
+	#for child in pillars.get_children():
+		#var left = Vector2(-child.radius, 0)
+		#var right = Vector2(child.radius, 0)
+		#var delta2 = body.position - child.position
+		#var atan3 = atan2(delta2.x, delta2.y)
+		#left = left.rotated(-atan3)
+		#right = right.rotated(-atan3)
+		#
+		#debug_line.add_point(child.position + left, 0)
+		#debug_line.add_point(child.position + right, 1)
+		#debug_line.add_point(body.position, 2)
+		#left_vect = Vector2(left + child.position)
+		#child_pos = child.position
+		#right_vect = Vector2(right + child.position)
+		#dbreak
 		
-		debug_line.add_point(child.position + left, 0)
-		debug_line.add_point(child.position + right, 1)
-		debug_line.add_point(body.position, 2)
-		left_vect = Vector2(left + child.position)
-		child_pos = child.position
-		right_vect = Vector2(right + child.position)
-		
-		if step_ticker <= 0:
-			_leg_step()
-			step_ticker = step_dist
-			$Node2D/LegsSprite/LegsSpriteAnimation/FootstepPlayer.play()
-		step_ticker -= velocity.length() * _delta
-		break
+	if step_ticker <= 0:
+		_leg_step()
+		step_ticker = step_dist
+		$Node2D/LegsSprite/LegsSpriteAnimation/FootstepPlayer.play()
+	step_ticker -= velocity.length() * _delta
 		
 var tripline
 func _physics_process2(_delta):
@@ -159,33 +159,33 @@ func _physics_process2(_delta):
 	var ray_startpoint : Vector2
 	var ray_endpoint : Vector2
 	
-	if 'tripline debug':
-		tripline.clear_points()
-		if !left_vect:
-			return
-		#var hittest: KinematicCollision2D = body.move_and_collide(velocity_)
-		#endpoint = -(body.position - left_vect) + child_pos 
-
-		tripline.add_point(Vector2(left_vect.x,left_vect.y), 0)
-		tripline.add_point(ray_endpoint, 1)
+	#if 'tripline debug':
+		#tripline.clear_points()
+		#if !left_vect:
+			#return
+		##var hittest: KinematicCollision2D = body.move_and_collide(velocity_)
+		##endpoint = -(body.position - left_vect) + child_pos 
+#
+		#tripline.add_point(Vector2(left_vect.x,left_vect.y), 0)
+		#tripline.add_point(ray_endpoint, 1)
 	
-	if 'debugline debug':
-		debugline_player_to_left.arrowtail = self.position
-		debugline_player_to_left.arrowhead = left_vect
-		
-		debugline_player_to_right.arrowtail = self.position
-		debugline_player_to_right.arrowhead = right_vect
-		
-		debugline_player_to_left_extended.arrowtail = left_vect
-		debugline_player_to_left_extended.arrowhead = left_vect + (((left_vect - self.position).normalized()) * 30.0)
-		
-		debugline_player_to_right_extended.arrowtail = right_vect
-		debugline_player_to_right_extended.arrowhead = right_vect + (((right_vect - self.position).normalized()) * 30.0)
-		
-		debugline_player_to_left_raycast_test.arrowtail =  left_vect + (((left_vect - self.position).normalized()) * 30.0)
-		debugline_player_to_left_raycast_test.arrowhead =  left_vect + (((left_vect - self.position).normalized()) * 1000.0)
-		ray_startpoint = debugline_player_to_left_raycast_test.arrowtail
-		ray_endpoint = debugline_player_to_left_raycast_test.arrowhead
+	#if 'debugline debug':
+		#debugline_player_to_left.arrowtail = self.position
+		#debugline_player_to_left.arrowhead = left_vect
+		#
+		#debugline_player_to_right.arrowtail = self.position
+		#debugline_player_to_right.arrowhead = right_vect
+		#
+		#debugline_player_to_left_extended.arrowtail = left_vect
+		#debugline_player_to_left_extended.arrowhead = left_vect + (((left_vect - self.position).normalized()) * 30.0)
+		#
+		#debugline_player_to_right_extended.arrowtail = right_vect
+		#debugline_player_to_right_extended.arrowhead = right_vect + (((right_vect - self.position).normalized()) * 30.0)
+		#
+		#debugline_player_to_left_raycast_test.arrowtail =  left_vect + (((left_vect - self.position).normalized()) * 30.0)
+		#debugline_player_to_left_raycast_test.arrowhead =  left_vect + (((left_vect - self.position).normalized()) * 1000.0)
+		#ray_startpoint = debugline_player_to_left_raycast_test.arrowtail
+		#ray_endpoint = debugline_player_to_left_raycast_test.arrowhead
 	
 	var query = PhysicsRayQueryParameters2D.create(ray_startpoint, ray_endpoint, my_collision_mask_SCREEN)
 	

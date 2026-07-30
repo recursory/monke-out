@@ -1,0 +1,2 @@
+class_name MyTarget
+extends RigidBody2D
