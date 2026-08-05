@@ -2,6 +2,7 @@ class_name MonkePlayer
 extends CharacterBody2D
 
 @export var speed: float = 200.0 # pixels per second
+@export var look_vect: Vector2 = Vector2(1.0, 0.0)
 
 var acceleration = Vector2()
 var step_ticker
@@ -81,8 +82,8 @@ func _physics_process(delta):
 
 	var pos = self.position
 	var mouse = get_viewport().get_mouse_position()
-	var look_vect = pos - mouse
-	$Node2D/TorsoSprite.rotation = look_vect.angle()
+	look_vect = mouse - pos
+	$Node2D/TorsoSprite.rotation = look_vect.angle() + PI
 
 @onready var debug_line = $"../debug/Line2D"
 

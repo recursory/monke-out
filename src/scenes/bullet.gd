@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var bullet_speed = 20
+var barrel_offset = Vector2(50.0, 0.0)
 
 func _ready():
 	#visible = false
@@ -13,7 +14,7 @@ func _input(event: InputEvent):
 		set_deferred("freeze", true)
 		var player = $/root/main/player
 		#visible = true
-		position = player.position
+		position = player.position + barrel_offset.rotated(player.look_vect.angle())
 		self.rotation = (player.position-event.position).angle()
 		print("bang!")
 		
