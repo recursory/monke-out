@@ -8,10 +8,11 @@ func _ready():
 	#collision_mask = 0
 	position.x = 0
 	position.y = 0
+	set_deferred("freeze", true)
+
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
-		set_deferred("freeze", true)
 		var player = $/root/main/player
 		#visible = true
 		position = player.position + barrel_offset.rotated(player.look_vect.angle())
