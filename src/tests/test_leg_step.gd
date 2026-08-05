@@ -3,11 +3,12 @@
 func _ready():
 	print("Hello World")
 
-func _test():
+func _test(context: Dictionary):
 	var player = preload("res://objects/player.tscn").instantiate()
 	print(typeof(player))
 	test_player_leg_step(player)
 	player.queue_free()
+	return true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

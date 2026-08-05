@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bicsfb00qqjgu"]
+[gd_scene load_steps=31 format=3 uid="uid://bicsfb00qqjgu"]
 
 [ext_resource type="PackedScene" uid="uid://cvhdyeq1qnwnh" path="res://objects/monkebars.tscn" id="1"]
 [ext_resource type="Script" uid="uid://bt1ln5bu1jcme" path="res://scenes/main.gd" id="1_uvd4o"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dn4xwj13qfr8u" path="res://scenes/fairy_move_2.tscn" id="13_0mnwe"]
 [ext_resource type="PackedScene" uid="uid://dslrnutsyism5" path="res://scenes/zomby.tscn" id="14_xgc0i"]
 [ext_resource type="PackedScene" uid="uid://clp1vvgt6v4av" path="res://scenes/bullet.tscn" id="15_7wy30"]
+[ext_resource type="Script" uid="uid://8qk8m0gj4g71" path="res://scenes/rougelike.gd" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://bv5k7o1c5hqur" path="res://scenes/target.tscn" id="17_muem4"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="9"]
 parameter_name = "ColorUniform"

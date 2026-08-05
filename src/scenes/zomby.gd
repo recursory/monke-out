@@ -14,8 +14,8 @@ var biggest_delta_so_far
 var last_bump = [0]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.y = 200
-	position.x = 500
+	#position.y = 500
+	#position.x = 200
 	step_ticker = 0
 	biggest_delta_so_far = 0
 
